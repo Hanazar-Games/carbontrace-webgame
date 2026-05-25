@@ -21,7 +21,7 @@ export default function Navbar({ onOpenVersion }) {
   const links = [
     { label: t.navbar.problem, href: '#problem' },
     { label: t.navbar.features, href: '#features' },
-    { label: t.navbar.calculator, href: '#calculator' },
+    { label: t.navbar.calculator || 'Quiz', href: '#quiz' },
     { label: t.navbar.impact, href: '#impact' },
   ]
 
@@ -95,14 +95,14 @@ export default function Navbar({ onOpenVersion }) {
               title="Changelog"
             >
               <GitBranch className="w-3.5 h-3.5" />
-              v1.0.2
+              v1.1.0
             </button>
 
             <a
-              href="#calculator"
+              href="#quiz"
               className="px-4 py-2 text-sm font-semibold text-white rounded-full bg-emerald-600 hover:bg-emerald-500 transition-colors"
             >
-              {t.navbar.tryDemo}
+              {t.navbar.tryDemo || 'Play Now'}
             </a>
           </div>
 
@@ -156,10 +156,10 @@ export default function Navbar({ onOpenVersion }) {
                 className="flex items-center justify-center gap-2 mt-2 py-3 text-base font-medium text-slate-300 rounded-xl border border-slate-800 bg-slate-900 hover:border-slate-600 transition-colors"
               >
                 <GitBranch className="w-4 h-4" />
-                Changelog v1.0.2
+                Changelog v1.1.0
               </button>
-              <a href="#calculator" onClick={() => setMobileOpen(false)} className="mt-3 text-center py-3 text-base font-semibold text-white rounded-full bg-emerald-600 hover:bg-emerald-500 transition-colors">
-                {t.navbar.tryDemo}
+              <a href="#quiz" onClick={() => setMobileOpen(false)} className="mt-3 text-center py-3 text-base font-semibold text-white rounded-full bg-emerald-600 hover:bg-emerald-500 transition-colors">
+                {t.navbar.tryDemo || 'Play Now'}
               </a>
             </div>
           </motion.div>

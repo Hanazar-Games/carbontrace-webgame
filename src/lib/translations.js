@@ -30,7 +30,8 @@ const translations = {
     calculator: { title: 'Quick Carbon Calculator', subtitle: 'Get a rough estimate of your annual carbon footprint in under a minute.', lifestyle: 'Your lifestyle', reset: 'Reset', transport: 'Weekly car travel', diet: 'Diet type', electricity: 'Monthly electricity', vegan: 'Vegan', vegetarian: 'Vegetarian', averageMeat: 'Average meat consumption', highMeat: 'High meat consumption', footprint: 'Your estimated footprint', perYear: 'CO₂e per year', globalAvg: 'Global average', comparisonExcellent: 'Excellent! You are well below the global average.', comparisonGood: 'Good job! You are below the global average.', comparisonWarn: 'You are above the global average. Room for improvement!', comparisonBad: 'Your footprint is significantly higher than average.' },
     impact: { title: 'Projected Impact', subtitle: 'What CarbonTrace could achieve with 10,000 active users. These are forward-looking estimates based on verified offset project data.', impact1: 'Potential annual CO₂ offset', impact2: 'Trees we could fund annually', impact3: 'Clean energy we could support' },
     cta: { title: 'Ready to shrink your footprint?', subtitle: 'Join the waitlist and be the first to get full access when we launch.', placeholder: 'Enter your email', join: 'Join Waitlist', subscribed: 'Subscribed', noSpam: 'No spam. Unsubscribe anytime.' },
-    footer: { tagline: 'Track. Reduce. Offset. Repeat.', copyright: 'Built for a better planet.' }
+    footer: { tagline: 'Track. Reduce. Offset. Repeat.', copyright: 'Built for a better planet.' },
+    quiz: { title: 'Carbon Quiz Challenge', subtitle: 'Test your carbon knowledge. Score points, build combos, and become a Planet Guardian!', startBtn: 'Start Challenge', timeRule: '15s per question', lifeRule: '3 lives', comboRule: 'Combo bonus', questionLabel: 'Question', scoreLabel: 'Score', accuracyLabel: 'Accuracy', maxComboLabel: 'Max Combo', correctLabel: 'Correct', didYouKnow: 'Did you know?', nextBtn: 'Next', seeResults: 'See Results', retryBtn: 'Play Again', gameOver: 'Game Over!', outOfLives: 'You ran out of lives.' }
   },
   zh: {
     navbar: { problem: '问题', features: '功能', calculator: '计算器', impact: '影响力', tryDemo: '试用演示' },
@@ -40,7 +41,8 @@ const translations = {
     calculator: { title: '快速碳足迹计算器', subtitle: '不到一分钟即可估算你的年度碳足迹。', lifestyle: '你的生活方式', reset: '重置', transport: '每周驾车里程', diet: '饮食类型', electricity: '每月电费', vegan: '纯素', vegetarian: '素食', averageMeat: '平均肉食', highMeat: '高肉食', footprint: '你的预估排放量', perYear: '每年二氧化碳当量', globalAvg: '全球平均值', comparisonExcellent: '太棒了！你远低于全球平均值。', comparisonGood: '做得好！你低于全球平均值。', comparisonWarn: '你高于全球平均值。还有改进空间！', comparisonBad: '你的足迹明显高于平均水平。' },
     impact: { title: '预期影响力', subtitle: '如果拥有 10,000 名活跃用户，CarbonTrace 有望实现的成果。这些是基于经认证抵消项目数据做出的前瞻性估算。', impact1: '每年有望抵消的 CO₂', impact2: '每年有望资助种植的树木', impact3: '有望支持的清洁能源' },
     cta: { title: '准备好减少你的碳足迹了吗？', subtitle: '加入等待名单，成为首批获得完整访问权限的用户。', placeholder: '输入你的邮箱', join: '加入等待名单', subscribed: '已订阅', noSpam: '绝不发送垃圾邮件。可随时取消订阅。' },
-    footer: { tagline: '追踪。减少。抵消。重复。', copyright: '为更美好的地球而造。' }
+    footer: { tagline: '追踪。减少。抵消。重复。', copyright: '为更美好的地球而造。' },
+    quiz: { title: '碳足迹知识挑战', subtitle: '测试你的碳排放知识。获得分数，积累连击，成为地球守护者！', startBtn: '开始挑战', timeRule: '每题15秒', lifeRule: '3条生命', comboRule: '连击加成', questionLabel: '问题', scoreLabel: '得分', accuracyLabel: '正确率', maxComboLabel: '最高连击', correctLabel: '答对', didYouKnow: '你知道吗？', nextBtn: '下一题', seeResults: '查看结果', retryBtn: '再玩一次', gameOver: '游戏结束！', outOfLives: '生命值耗尽了。' }
   },
   es: {
     navbar: { problem: 'Problema', features: 'Funciones', calculator: 'Calculadora', impact: 'Impacto', tryDemo: 'Probar demo' },

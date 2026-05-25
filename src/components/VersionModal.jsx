@@ -1,12 +1,25 @@
 import { useState } from 'react'
 import { motion, AnimatePresence } from 'framer-motion'
-import { X, GitBranch, Clock, Sparkles, Layers, Globe, Zap, BarChart3 } from 'lucide-react'
+import { X, GitBranch, Clock, Sparkles, Layers, Globe, Zap, BarChart3, Gamepad2, Trophy, Palette, Music } from 'lucide-react'
 
 const versions = [
   {
+    version: '1.1.0',
+    date: '2026-05-25',
+    current: true,
+    changes: [
+      { icon: Gamepad2, text: 'Carbon Quiz Game — 30 bilingual questions across 5 categories with difficulty levels' },
+      { icon: Trophy, text: 'Achievement system with 6 unlockable badges + high score leaderboard (per difficulty)' },
+      { icon: Sparkles, text: 'Mascot "Leafy" — animated SVG companion with 7 expressions reacting to gameplay' },
+      { icon: Zap, text: 'Difficulty selector: Easy (8Q/20s), Medium (10Q/15s), Hard (15Q/10s)' },
+      { icon: Music, text: 'SFX system: correct/wrong/combo/gameover sounds via Web Audio API' },
+      { icon: Palette, text: 'Maximized UI/UX: particle backgrounds, screen flash, confetti, 3D card tilt, glow cursor' },
+    ],
+  },
+  {
     version: '1.0.2',
     date: '2026-04-17',
-    current: true,
+    current: false,
     changes: [
       { icon: Globe, text: 'Added 20-language i18n support with real-time switching' },
       { icon: BarChart3, text: 'Added IPCC / Global Carbon Project citations to Problem stats' },
@@ -38,7 +51,7 @@ const versions = [
 ]
 
 export default function VersionModal({ isOpen, onClose }) {
-  const [expanded, setExpanded] = useState('1.0.2')
+  const [expanded, setExpanded] = useState('1.1.0')
 
   return (
     <AnimatePresence>
@@ -52,7 +65,7 @@ export default function VersionModal({ isOpen, onClose }) {
               <div className="flex items-center gap-2">
                 <GitBranch className="w-5 h-5 text-emerald-400" />
                 <h3 className="text-lg font-bold text-white">Changelog</h3>
-                <span className="ml-2 px-2 py-0.5 text-xs font-semibold text-emerald-300 bg-emerald-500/10 rounded-full border border-emerald-500/20">v1.0.2</span>
+                <span className="ml-2 px-2 py-0.5 text-xs font-semibold text-emerald-300 bg-emerald-500/10 rounded-full border border-emerald-500/20">v1.1.0</span>
               </div>
               <button onClick={onClose} className="p-1.5 rounded-lg text-slate-400 hover:text-white hover:bg-slate-800 transition-colors"><X className="w-5 h-5" /></button>
             </div>
