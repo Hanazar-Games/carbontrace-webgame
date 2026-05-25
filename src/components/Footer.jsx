@@ -1,9 +1,10 @@
 import { motion } from 'framer-motion'
 import { Mail, Globe, MessageCircle } from 'lucide-react'
 import { useLanguage } from '../context/LanguageContext'
+import { worksCited } from '../lib/quizData'
 
 export default function Footer() {
-  const { t } = useLanguage()
+  const { t, lang } = useLanguage()
   return (
     <footer className="px-6 py-16 border-t bg-slate-950 border-slate-900">
       <div className="max-w-5xl mx-auto">
@@ -21,7 +22,23 @@ export default function Footer() {
             ))}
           </div>
         </motion.div>
-        <div className="mt-12 pt-8 border-t border-slate-900 text-center text-sm text-slate-500">
+
+        {/* Works Cited */}
+        <motion.div initial={{ opacity: 0 }} whileInView={{ opacity: 1 }} viewport={{ once: true }} transition={{ duration: 0.6, delay: 0.2 }}
+          className="mt-8 pt-6 border-t border-slate-900/50">
+          <div className="text-[10px] font-bold text-slate-600 uppercase tracking-wider mb-2 text-center">
+            {lang === 'zh' ? '参考文献' : 'Works Cited'}
+          </div>
+          <ul className="space-y-1 text-center">
+            {worksCited.map((c, i) => (
+              <li key={i} className="text-[9px] text-slate-600 leading-relaxed">
+                [{i + 1}] {c}
+              </li>
+            ))}
+          </ul>
+        </motion.div>
+
+        <div className="mt-8 pt-6 border-t border-slate-900 text-center text-sm text-slate-500">
           © {new Date().getFullYear()} CarbonTrace. {t.footer.copyright}
         </div>
       </div>

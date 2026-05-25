@@ -21,6 +21,7 @@ const stemPaths = {
 }
 
 export default function Mascot({ mood = 'idle', size = 80 }) {
+  const validMood = expressions[mood] ? mood : 'idle'
   const eyeVariant = {
     idle: { ry: 4 },
     happy: { ry: 1, rx: 5 },
@@ -51,19 +52,20 @@ export default function Mascot({ mood = 'idle', size = 80 }) {
     wave: 0.2,
   }
 
-  const isAnimatedStem = mood === 'happy' || mood === 'excited' || mood === 'wave'
-  const stemTarget = stemPaths[mood]
+  const isAnimatedStem = validMood === 'happy' || validMood === 'excited' || validMood === 'wave'
+  const stemTarget = stemPaths[validMood]
 
   return (
     <motion.div
-      animate={expressions[mood]}
-      transition={{ duration: mood === 'excited' ? 0.4 : 0.6, repeat: mood === 'happy' || mood === 'excited' || mood === 'wave' ? Infinity : 0, repeatType: 'reverse' }}
+      animate={expressions[validMood]}
+      transition={{ duration: validMood === 'excited' ? 0.4 : 0.6, repeat: validMood === 'happy' || validMood === 'excited' || validMood === 'wave' ? Infinity : 0, repeatType: 'reverse' }}
       style={{ width: size, height: size }}
       className="relative"
+      aria-hidden="true"
     >
       <svg viewBox="0 0 100 100" width={size} height={size} className="drop-shadow-[0_0_15px_rgba(16,185,129,0.3)]">
         <defs>
-          <linearGradient id={`leafGrad-${mood}`} x1="0%" y1="0%" x2="100%" y2="100%">
+          <linearGradient id={`leafGrad-${validMood}`} x1="0%" y1="0%" x2="100%" y2="100%">
             <stop offset="0%" stopColor="#34d399" />
             <stop offset="100%" stopColor="#10b981" />
           </linearGradient>
@@ -83,10 +85,10 @@ export default function Mascot({ mood = 'idle', size = 80 }) {
         {/* Main leaf shape */}
         <motion.path
           d="M 50 85 Q 20 60 20 40 Q 20 15 50 10 Q 80 15 80 40 Q 80 60 50 85"
-          fill={`url(#leafGrad-${mood})`}
+          fill={`url(#leafGrad-${validMood})`}
           stroke="#059669"
           strokeWidth="2"
-          animate={mood === 'sad' ? { d: 'M 50 85 Q 25 65 25 45 Q 25 20 50 15 Q 75 20 75 45 Q 75 65 50 85' } : { d: 'M 50 85 Q 20 60 20 40 Q 20 15 50 10 Q 80 15 80 40 Q 80 60 50 85' }}
+          animate={validMood === 'sad' ? { d: 'M 50 85 Q 25 65 25 45 Q 25 20 50 15 Q 75 20 75 45 Q 75 65 50 85' } : { d: 'M 50 85 Q 20 60 20 40 Q 20 15 50 10 Q 80 15 80 40 Q 80 60 50 85' }}
           transition={{ duration: 0.3 }}
         />
 
@@ -98,12 +100,12 @@ export default function Mascot({ mood = 'idle', size = 80 }) {
         <path d="M 50 65 Q 65 62 70 68" stroke="#059669" strokeWidth="1" strokeLinecap="round" fill="none" opacity="0.4" />
 
         {/* Left eye */}
-        <motion.ellipse cx="38" cy="42" rx="4" animate={eyeVariant[mood]} transition={{ duration: 0.2 }} fill="#064e3b" />
+        <motion.ellipse cx="38" cy="42" rx="4" animate={eyeVariant[validMood]} transition={{ duration: 0.2 }} fill="#064e3b" />
         {/* Right eye */}
-        <motion.ellipse cx="62" cy="42" rx="4" animate={eyeVariant[mood]} transition={{ duration: 0.2 }} fill="#064e3b" />
+        <motion.ellipse cx="62" cy="42" rx="4" animate={eyeVariant[validMood]} transition={{ duration: 0.2 }} fill="#064e3b" />
 
         {/* Eye shine */}
-        {mood !== 'shock' && (
+        {validMood !== 'shock' && (
           <>
             <circle cx="36" cy="40" r="1.5" fill="white" opacity="0.8" />
             <circle cx="60" cy="40" r="1.5" fill="white" opacity="0.8" />
@@ -111,15 +113,15 @@ export default function Mascot({ mood = 'idle', size = 80 }) {
         )}
 
         {/* Mouth */}
-        <motion.path d={mouthPath[mood]} stroke="#064e3b" strokeWidth="2.5" strokeLinecap="round" fill="none"
-          animate={{ d: mouthPath[mood] }} transition={{ duration: 0.2 }} />
+        <motion.path d={mouthPath[validMood]} stroke="#064e3b" strokeWidth="2.5" strokeLinecap="round" fill="none"
+          animate={{ d: mouthPath[validMood] }} transition={{ duration: 0.2 }} />
 
         {/* Cheeks */}
-        <circle cx="30" cy="52" r="5" fill="#f472b6" opacity={cheekOpacity[mood]} />
-        <circle cx="70" cy="52" r="5" fill="#f472b6" opacity={cheekOpacity[mood]} />
+        <circle cx="30" cy="52" r="5" fill="#f472b6" opacity={cheekOpacity[validMood]} />
+        <circle cx="70" cy="52" r="5" fill="#f472b6" opacity={cheekOpacity[validMood]} />
 
         {/* Sweat drop for shock */}
-        {mood === 'shock' && (
+        {validMood === 'shock' && (
           <motion.path initial={{ opacity: 0, y: 0 }} animate={{ opacity: 1, y: 5 }}
             d="M 72 35 Q 72 30 75 30 Q 78 30 78 35 Q 78 40 75 40 Q 72 40 72 35" fill="#60a5fa" />
         )}

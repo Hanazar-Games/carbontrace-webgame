@@ -1,4 +1,4 @@
-import { createContext, useContext, useState, useEffect } from 'react'
+import { createContext, useContext, useState, useEffect, useMemo } from 'react'
 import { getTranslation } from '../lib/translations'
 
 const LanguageContext = createContext()
@@ -15,12 +15,6 @@ export function LanguageProvider({ children }) {
     return 'en'
   })
 
-  const [mounted, setMounted] = useState(false)
-
-  useEffect(() => {
-    setMounted(true)
-  }, [])
-
   useEffect(() => {
     if (typeof window !== 'undefined') {
       localStorage.setItem('carbontrace-lang', lang)
@@ -31,8 +25,10 @@ export function LanguageProvider({ children }) {
 
   const t = getTranslation(lang)
 
+  const value = useMemo(() => ({ lang, setLang, t }), [lang, setLang, t])
+
   return (
-    <LanguageContext.Provider value={{ lang, setLang, t, mounted }}>
+    <LanguageContext.Provider value={value}>
       {children}
     </LanguageContext.Provider>
   )

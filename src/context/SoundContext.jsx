@@ -1,4 +1,4 @@
-import { createContext, useContext, useRef, useCallback, useState } from 'react'
+import { createContext, useContext, useRef, useCallback, useState, useMemo, useEffect } from 'react'
 
 const SoundContext = createContext()
 
@@ -63,6 +63,12 @@ export function SoundProvider({ children }) {
     })
   }, [playTone])
 
+  const playWin = useCallback(() => {
+    [523.25, 659.25, 783.99, 1046.5, 1318.5].forEach((f, i) => {
+      playTone(f, 0.3, 'sine', 0.2, i * 0.12)
+    })
+  }, [playTone])
+
   const playClick = useCallback(() => {
     playTone(800, 0.05, 'sine', 0.08, 0)
   }, [playTone])
@@ -71,11 +77,22 @@ export function SoundProvider({ children }) {
     playTone(1200, 0.03, 'square', 0.05, 0)
   }, [playTone])
 
+  useEffect(() => {
+    return () => {
+      if (audioCtxRef.current) {
+        audioCtxRef.current.close().catch(() => {})
+        audioCtxRef.current = null
+      }
+    }
+  }, [])
+
+  const value = useMemo(() => ({
+    muted, setMuted,
+    playCorrect, playWrong, playCombo, playStart, playGameOver, playWin, playClick, playTick
+  }), [muted, setMuted, playCorrect, playWrong, playCombo, playStart, playGameOver, playWin, playClick, playTick])
+
   return (
-    <SoundContext.Provider value={{
-      muted, setMuted,
-      playCorrect, playWrong, playCombo, playStart, playGameOver, playClick, playTick
-    }}>
+    <SoundContext.Provider value={value}>
       {children}
     </SoundContext.Provider>
   )

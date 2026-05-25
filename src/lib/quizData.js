@@ -5,121 +5,314 @@ export const categories = {
 
 export const quizQuestions = {
   en: [
-    // FOOD
-    { question: "Which food has the highest carbon footprint per kilogram?", options: ["Rice", "Beef", "Chicken", "Potatoes"], correct: 1, explanation: "Beef produces ~60 kg CO₂ per kg. A single cow burps 200L of methane daily!", difficulty: 1, category: 'food' },
-    { question: "How much lower is a vegan diet's footprint compared to a meat-heavy diet?", options: ["~10% lower", "~30% lower", "~50% lower", "~75% lower"], correct: 3, explanation: "A vegan diet produces ~75% less emissions. Going vegan for a year saves more CO₂ than giving up your car!", difficulty: 2, category: 'food' },
-    { question: "Which has a bigger footprint: a cup of coffee or a cup of tea?", options: ["Coffee", "Tea", "Same", "Depends on brand"], correct: 0, explanation: "Coffee's footprint is ~3x tea's. Those imported beans travel far, and growing requires lots of water!", difficulty: 2, category: 'food' },
-    { question: "What percentage of global emissions come from food systems?", options: ["~15%", "~26%", "~35%", "~45%"], correct: 1, explanation: "Food systems produce ~26% of global emissions. If food waste were a country, it'd be #3 emitter!", difficulty: 2, category: 'food' },
-    { question: "Avocados are delicious, but how much water to grow 1 kg?", options: ["~200L", "~1,000L", "~2,000L", "~5,000L"], correct: 2, explanation: "~2,000L per kg! California's drought + avocado toast craze = serious water stress.", difficulty: 3, category: 'food' },
-    { question: "Which milk alternative has the lowest footprint?", options: ["Almond", "Oat", "Soy", "Rice"], correct: 1, explanation: "Oat milk wins! Almonds need lots of water, rice paddies emit methane. Oats are humble but green.", difficulty: 2, category: 'food' },
-
-    // TRANSPORT
-    { question: "Which transport mode emits the least CO₂ per passenger km?", options: ["Short-haul flight", "Petrol car", "High-speed train", "Bus"], correct: 2, explanation: "Trains emit ~6g CO₂/pkm. A full bus is close, but trains are electric magic on rails!", difficulty: 1, category: 'transport' },
-    { question: "A single round-trip flight NYC→London emits roughly how much CO₂ per passenger?", options: ["~0.5t", "~1t", "~2t", "~5t"], correct: 1, explanation: "~1 tonne! That's 1/5 of an average person's annual budget. Fly less, explore locally!", difficulty: 2, category: 'transport' },
-    { question: "What's the main emission from EVs?", options: ["Tailpipe", "Tire wear", "Electricity generation", "Battery production"], correct: 2, explanation: "EVs have no tailpipe, but the electricity powering them matters. In coal-heavy grids, EVs are less clean.", difficulty: 2, category: 'transport' },
-    { question: "Cruise ships emit how much CO₂ per passenger per day?", options: ["~5kg", "~25kg", "~80kg", "~200kg"], correct: 2, explanation: "~80kg/day! A week cruise = driving 3,000km. Plus they dump waste straight into oceans. Yikes!", difficulty: 3, category: 'transport' },
-    { question: "Cycling 10km emits how much CO₂?", options: ["0g", "~50g", "~200g", "~500g"], correct: 1, explanation: "~50g from extra food calories! But the food you'd eat anyway makes it effectively zero. Win-win!", difficulty: 2, category: 'transport' },
-
-    // ENERGY
-    { question: "What percentage of global energy still comes from fossil fuels?", options: ["~40%", "~55%", "~70%", "~82%"], correct: 3, explanation: "~82%! Despite renewables booming, fossils still dominate. The transition needs to speed up!", difficulty: 2, category: 'energy' },
-    { question: "Which renewable has the lowest lifecycle emissions?", options: ["Solar PV", "Wind", "Hydro", "Nuclear"], correct: 1, explanation: "Wind at ~11g CO₂/kWh! Nuclear is close (~12g). Both beat coal (~820g) by a landslide.", difficulty: 3, category: 'energy' },
-    { question: "How much of home energy use goes to heating/cooling?", options: ["~20%", "~40%", "~60%", "~80%"], correct: 1, explanation: "~40-50%! Insulating your home is one of the highest-impact things you can do.", difficulty: 2, category: 'energy' },
-    { question: "Standby power (vampire power) accounts for what % of home electricity?", options: ["~1-2%", "~5-10%", "~15-20%", "~30%"], correct: 1, explanation: "~5-10%! Unplugging chargers and using smart strips adds up. Your TV is sneakily sipping power all night.", difficulty: 2, category: 'energy' },
-    { question: "Bitcoin mining uses more electricity than which country?", options: ["Switzerland", "Argentina", "Australia", "All of the above"], correct: 3, explanation: "All of them! Bitcoin uses ~150 TWh/year. That's a lot of coal-burning for digital coins.", difficulty: 3, category: 'energy' },
-
-    // CONSUMPTION
-    { question: "Roughly what % of plastic ever produced has been recycled?", options: ["~9%", "~25%", "~45%", "~60%"], correct: 0, explanation: "Only ~9%! 79% is in landfills/oceans. Your 'recyclable' bottle probably isn't getting recycled.", difficulty: 2, category: 'consumption' },
-    { question: "The fashion industry produces what % of global emissions?", options: ["~2%", "~5%", "~10%", "~15%"], correct: 2, explanation: "~10%! A cotton t-shirt uses 2,700L water. Fast fashion = fast emissions. Thrift shop power!", difficulty: 2, category: 'consumption' },
-    { question: "How many trees are needed to offset 1 tonne of CO₂ per year?", options: ["~5", "~15", "~50", "~100"], correct: 2, explanation: "~50 mature trees! Each absorbs ~22kg/year. Planting is good, but reducing emissions is better.", difficulty: 2, category: 'consumption' },
-    { question: "Streaming 1 hour of HD video emits about how much CO₂?", options: ["~1g", "~36g", "~200g", "~1kg"], correct: 1, explanation: "~36g! Binge-watching a season = driving 10km. The internet runs on coal-powered data centers!", difficulty: 3, category: 'consumption' },
-    { question: "A single Amazon delivery's average footprint is closest to:", options: ["Driving 1km", "Driving 5km", "Driving 20km", "Driving 100km"], correct: 0, explanation: "~1km of driving! But Prime's 'free' shipping encourages overconsumption. The real cost is hidden.", difficulty: 3, category: 'consumption' },
-
-    // NATURE
-    { question: "Which ocean absorbs the most CO₂?", options: ["Atlantic", "Indian", "Southern (Antarctic)", "Pacific"], correct: 2, explanation: "The Southern Ocean! Cold water dissolves more CO₂. It's saved us from even worse warming.", difficulty: 3, category: 'nature' },
-    { question: "How much has the global sea level risen since 1900?", options: ["~5cm", "~15cm", "~25cm", "~40cm"], correct: 2, explanation: "~21-24cm and accelerating! By 2100, projections range 30cm to 1m+. Coastal cities are nervous.", difficulty: 2, category: 'nature' },
-    { question: "The Amazon rainforest absorbs roughly how much CO₂ yearly?", options: ["100M tonnes", "500M tonnes", "1B tonnes", "2B tonnes"], correct: 3, explanation: "~2 billion tonnes! But deforestation is turning it into a carbon source. Save the lungs of Earth!", difficulty: 3, category: 'nature' },
-    { question: "Permafrost thawing could release which dangerous gas?", options: ["CO₂ only", "Methane", "Nitrous oxide", "All of the above"], correct: 3, explanation: "All three! Ancient microbes wake up and party. This feedback loop could be catastrophic.", difficulty: 3, category: 'nature' },
-    { question: "Coral bleaching is primarily caused by:", options: ["Ocean acidification", "Warmer water", "Plastic pollution", "Overfishing"], correct: 1, explanation: "Warmer water! Even 1°C rise stresses corals. The Great Barrier Reef has lost half its corals since 1995.", difficulty: 2, category: 'nature' },
-
-    // MIXED
-    { question: "By what year does IPCC recommend net-zero for 1.5°C?", options: ["2030", "2040", "2050", "2070"], correct: 2, explanation: "2050 globally! But developed nations should hit 2045. The clock is ticking LOUDLY.", difficulty: 2, category: 'energy' },
-    { question: "Which country has the highest per-capita carbon footprint?", options: ["China", "USA", "India", "Germany"], correct: 1, explanation: "USA at ~15t/year! Qatar and Kuwait are higher, but USA's 330M people × 15t = massive total.", difficulty: 1, category: 'consumption' },
-    { question: "Methane is how many times more potent than CO₂ over 20 years?", options: ["~10x", "~28x", "~80x", "~100x"], correct: 2, explanation: "~80x over 20 years! But it breaks down in ~12 years. Cutting methane NOW buys us time.", difficulty: 3, category: 'nature' },
-    { question: "A person's annual carbon footprint to stay under 1.5°C should be under:", options: ["10 tonnes", "5 tonnes", "2.5 tonnes", "1 tonne"], correct: 2, explanation: "~2.3 tonnes! Global average is 4.7t. Americans average 15t. We ALL need to shrink fast.", difficulty: 2, category: 'consumption' },
-    { question: "The main greenhouse gas from livestock is:", options: ["CO₂ from breathing", "Methane from burps", "Nitrous oxide from manure", "All equal"], correct: 1, explanation: "Methane from enteric fermentation (fancy word for cow burps)! One cow = burning 235L gasoline/year.", difficulty: 1, category: 'food' },
+    {
+      question: "Which food has the highest carbon footprint?",
+      options: ["Rice", "Beef", "Chicken", "Potatoes"],
+      correct: 1,
+      explanation: "Beef produces ~60 kg CO₂ per kg. One cow burps 200 litres of methane daily.",
+      difficulty: 1,
+      category: 'food',
+      image: '/images/cow.jpg',
+      citation: "Poore, J., & Nemecek, T. (2018). Reducing food's environmental impacts. Science, 360(6392), 987-992."
+    },
+    {
+      question: "Going vegan cuts food emissions by about:",
+      options: ["10%", "30%", "50%", "75%"],
+      correct: 3,
+      explanation: "A fully plant-based diet produces roughly 75% fewer greenhouse-gas emissions than a meat-rich diet.",
+      difficulty: 1,
+      category: 'food',
+      image: '/images/vegan.jpg',
+      citation: "Poore, J., & Nemecek, T. (2018). Science, 360(6392), 987-992."
+    },
+    {
+      question: "Coffee or tea — which has a bigger footprint?",
+      options: ["Coffee", "Tea", "Same", "Depends"],
+      correct: 0,
+      explanation: "Coffee's footprint is roughly 3× that of tea, due to processing and long-distance transport.",
+      difficulty: 2,
+      category: 'food',
+      image: '/images/coffeebeans.jpg',
+      citation: "Ritchie, H., et al. Our World in Data: CO₂ and Greenhouse Gas Emissions."
+    },
+    {
+      question: "Which plant milk is the greenest?",
+      options: ["Almond", "Oat", "Soy", "Rice"],
+      correct: 1,
+      explanation: "Oat milk has the lowest combined land use, water use and emissions. Almonds are water-intensive.",
+      difficulty: 1,
+      category: 'food',
+      image: '/images/food.jpg',
+      citation: "Poore, J., & Nemecek, T. (2018). Science, 360(6392), 987-992."
+    },
+    {
+      question: "How much water to grow 1 kg of avocados?",
+      options: ["~200 L", "~1,000 L", "~2,000 L", "~5,000 L"],
+      correct: 2,
+      explanation: "About 2,000 litres per kg — more drinking water than most people consume in six months.",
+      difficulty: 3,
+      category: 'food',
+      image: '/images/avocado.jpg',
+      citation: "Mekonnen, M. M., & Hoekstra, A. Y. (2010). Water Footprint Network."
+    },
+    {
+      question: "Which transport emits the least CO₂ per passenger km?",
+      options: ["Plane", "Car", "Train", "Bus"],
+      correct: 2,
+      explanation: "Rail emits only ~6 g CO₂ per passenger km. A full bus is a close second.",
+      difficulty: 1,
+      category: 'transport',
+      image: '/images/train.jpg',
+      citation: "IEA. (2023). World Energy Outlook 2023."
+    },
+    {
+      question: "One round-trip flight NYC → London emits about:",
+      options: ["0.5 tonne", "1 tonne", "2 tonnes", "5 tonnes"],
+      correct: 1,
+      explanation: "~1 tonne per passenger. That is roughly one-fifth of a sustainable annual carbon budget.",
+      difficulty: 2,
+      category: 'transport',
+      image: '/images/airplane.jpg',
+      citation: "ICAO Carbon Emissions Calculator."
+    },
+    {
+      question: "Where do most EV lifecycle emissions come from?",
+      options: ["Tailpipe", "Tires", "Power grid", "Batteries"],
+      correct: 2,
+      explanation: "EVs have no tailpipe, but the carbon intensity of the electricity grid dominates their footprint.",
+      difficulty: 2,
+      category: 'transport',
+      image: '/images/ev.jpg',
+      citation: "IEA. (2023). World Energy Outlook 2023."
+    },
+    {
+      question: "What % of all plastic ever made has been recycled?",
+      options: ["~9%", "~25%", "~45%", "~60%"],
+      correct: 0,
+      explanation: "Only ~9%. Roughly 79% has accumulated in landfills or the natural environment.",
+      difficulty: 2,
+      category: 'consumption',
+      image: '/images/plastic.jpg',
+      citation: "OECD. (2022). Global Plastics Outlook: Policy Scenarios to 2060."
+    },
+    {
+      question: "Fashion produces what % of global emissions?",
+      options: ["~2%", "~5%", "~10%", "~15%"],
+      correct: 2,
+      explanation: "~10%. A single cotton T-shirt can require 2,700 litres of water to produce.",
+      difficulty: 1,
+      category: 'consumption',
+      image: '/images/fashion.jpg',
+      citation: "UNFCCC. (2018). Fashion Industry Charter for Climate Action."
+    },
+    {
+      question: "Which energy has the lowest lifecycle emissions?",
+      options: ["Solar", "Wind", "Hydro", "Nuclear"],
+      correct: 1,
+      explanation: "Wind averages ~11 g CO₂ per kWh across its full lifecycle, far below coal (~820 g).",
+      difficulty: 2,
+      category: 'energy',
+      image: '/images/wind.jpg',
+      citation: "IPCC. (2023). AR6 Synthesis Report."
+    },
+    {
+      question: "Standby power wastes what % of home electricity?",
+      options: ["~1%", "~5–10%", "~15%", "~30%"],
+      correct: 1,
+      explanation: "~5–10%. Unplugging chargers and using smart power strips cuts this waste.",
+      difficulty: 2,
+      category: 'energy',
+      image: '/images/laptop.jpg',
+      citation: "IEA. (2023). World Energy Outlook 2023."
+    },
+    {
+      question: "How many trees to offset ~1 tonne of CO₂ per year?",
+      options: ["~5", "~15", "~50", "~100"],
+      correct: 2,
+      explanation: "~50 mature trees. Each absorbs roughly 22 kg of CO₂ per year through photosynthesis.",
+      difficulty: 2,
+      category: 'nature',
+      image: '/images/forest.jpg',
+      citation: "One Tree Planted; U.S. EPA. Greenhouse Gas Equivalencies Calculator."
+    },
+    {
+      question: "Global sea level has risen ~__ since 1900:",
+      options: ["5 cm", "15 cm", "21–24 cm", "40 cm"],
+      correct: 2,
+      explanation: "~21–24 cm and accelerating. By 2100: 30 cm to 1 m+ under high-emission scenarios.",
+      difficulty: 2,
+      category: 'nature',
+      image: '/images/sealevel.jpg',
+      citation: "NASA; NOAA. (2023). Global Climate Report."
+    },
+    {
+      question: "What is the main cause of coral bleaching?",
+      options: ["Acidification", "Warmer water", "Plastic", "Overfishing"],
+      correct: 1,
+      explanation: "Warmer water. Even 1°C rise stresses corals. The Great Barrier Reef has lost half since 1995.",
+      difficulty: 3,
+      category: 'nature',
+      image: '/images/coral.jpg',
+      citation: "IPCC. (2023). AR6 Synthesis Report."
+    }
   ],
 
   zh: [
-    // 饮食
-    { question: "哪种食物每公斤碳足迹最高？", options: ["大米", "牛肉", "鸡肉", "土豆"], correct: 1, explanation: "牛肉每公斤约产生60公斤CO₂！一头牛每天打200升甲烷嗝！", difficulty: 1, category: 'food' },
-    { question: "纯素饮食比高肉食饮食的碳足迹低多少？", options: ["约10%", "约30%", "约50%", "约75%"], correct: 3, explanation: "纯素饮食排放量减少约75%！一年不吃肉比放弃开车减排更多！", difficulty: 2, category: 'food' },
-    { question: "一杯咖啡和一杯茶，哪个碳足迹更大？", options: ["咖啡", "茶", "一样", "看品牌"], correct: 0, explanation: "咖啡的碳足迹是茶的约3倍！进口咖啡豆长途运输，种植还耗大量水！", difficulty: 2, category: 'food' },
-    { question: "全球排放中食物系统占多少比例？", options: ["约15%", "约26%", "约35%", "约45%"], correct: 1, explanation: "食物系统产生约26%的全球排放！如果食物浪费是一个国家，它将是第三大排放国！", difficulty: 2, category: 'food' },
-    { question: "牛油果很好吃，但种植1公斤需要多少水？", options: ["约200升", "约1000升", "约2000升", "约5000升"], correct: 2, explanation: "约2000升！加州干旱+牛油果吐司热潮=严重水资源压力。", difficulty: 3, category: 'food' },
-    { question: "哪种植物奶碳足迹最低？", options: ["杏仁奶", "燕麦奶", "豆奶", "米奶"], correct: 1, explanation: "燕麦奶胜出！杏仁耗水多，水稻田释放甲烷。燕麦 humble 但环保。", difficulty: 2, category: 'food' },
-
-    // 交通
-    { question: "哪种交通方式每位乘客每公里CO₂排放最低？", options: ["短途航班", "汽油车", "高铁", "公交车"], correct: 2, explanation: "高铁仅约6克CO₂/公里！满载公交车也很低，但火车是铁轨上的电动魔法！", difficulty: 1, category: 'transport' },
-    { question: "纽约往返伦敦一次航班，每位乘客约产生多少CO₂？", options: ["约0.5吨", "约1吨", "约2吨", "约5吨"], correct: 1, explanation: "约1吨！这相当于普通人年排放量的1/5。少飞行，多探索本地！", difficulty: 2, category: 'transport' },
-    { question: "电动汽车的主要排放来自哪里？", options: ["排气管", "轮胎磨损", "发电", "电池生产"], correct: 2, explanation: "电动车没有排气管，但驱动它的电力来源很关键。煤电为主的地区，电动车没那么清洁。", difficulty: 2, category: 'transport' },
-    { question: "游轮每位乘客每天排放多少CO₂？", options: ["约5公斤", "约25公斤", "约80公斤", "约200公斤"], correct: 2, explanation: "约80公斤/天！一周游轮=开车3000公里。而且它们直接把垃圾倒入大海。", difficulty: 3, category: 'transport' },
-    { question: "骑行10公里排放多少CO₂？", options: ["0克", "约50克", "约200克", "约500克"], correct: 1, explanation: "约50克来自额外食物热量！但你本来就要吃饭，所以实际上接近零。双赢！", difficulty: 2, category: 'transport' },
-
-    // 能源
-    { question: "全球能源中仍有多少比例来自化石燃料？", options: ["约40%", "约55%", "约70%", "约82%"], correct: 3, explanation: "约82%！尽管可再生能源在增长，化石燃料仍占主导。转型需要加速！", difficulty: 2, category: 'energy' },
-    { question: "哪种可再生能源全生命周期排放最低？", options: ["太阳能", "风能", "水电", "核能"], correct: 1, explanation: "风能约11克CO₂/千瓦时！核能也很接近（约12克）。都远胜煤炭（约820克）。", difficulty: 3, category: 'energy' },
-    { question: "家庭能源消耗中，供暖/制冷占多少？", options: ["约20%", "约40%", "约60%", "约80%"], correct: 1, explanation: "约40-50%！给房屋隔热是你能做的最高影响力的事情之一。", difficulty: 2, category: 'energy' },
-    { question: "待机功耗（吸血鬼功耗）占家庭用电多少？", options: ["约1-2%", "约5-10%", "约15-20%", "约30%"], correct: 1, explanation: "约5-10%！拔掉充电器、使用智能插排可以积少成多。你的电视整晚都在偷偷耗电。", difficulty: 2, category: 'energy' },
-    { question: "比特币挖矿用电量超过哪个国家？", options: ["瑞士", "阿根廷", "澳大利亚", "以上全部"], correct: 3, explanation: "超过以上全部！比特币年耗电约150太瓦时。烧煤挖数字币，值吗？", difficulty: 3, category: 'energy' },
-
-    // 消费
-    { question: "有史以来生产的塑料中，约多少被回收？", options: ["约9%", "约25%", "约45%", "约60%"], correct: 0, explanation: "仅约9%！79%进入垃圾填埋场或海洋。你那个'可回收'瓶子很可能没被回收。", difficulty: 2, category: 'consumption' },
-    { question: "时尚产业产生全球排放的多少？", options: ["约2%", "约5%", "约10%", "约15%"], correct: 2, explanation: "约10%！一件棉T恤耗水2700升。快时尚=快排放。二手店才是时尚！", difficulty: 2, category: 'consumption' },
-    { question: "每年抵消1吨CO₂大约需要多少棵树？", options: ["约5棵", "约15棵", "约50棵", "约100棵"], correct: 2, explanation: "约50棵成熟树木！每棵每年吸收约22公斤。种树好，但减排更好。", difficulty: 2, category: 'consumption' },
-    { question: "流媒体1小时高清视频排放多少CO₂？", options: ["约1克", "约36克", "约200克", "约1公斤"], correct: 1, explanation: "约36克！刷完一季=开车10公里。互联网靠煤电数据中心运转！", difficulty: 3, category: 'consumption' },
-    { question: "一次亚马逊配送的平均碳足迹最接近：", options: ["开车1公里", "开车5公里", "开车20公里", "开车100公里"], correct: 0, explanation: "约开车1公里！但Prime'免费'送货助长了过度消费。真正的成本是隐藏的。", difficulty: 3, category: 'consumption' },
-
-    // 自然
-    { question: "哪个大洋吸收最多CO₂？", options: ["大西洋", "印度洋", "南大洋（南极）", "太平洋"], correct: 2, explanation: "南大洋！冷水溶解更多CO₂。它帮我们避免了更严重的变暖。", difficulty: 3, category: 'nature' },
-    { question: "自1900年以来全球海平面上升了多少？", options: ["约5厘米", "约15厘米", "约25厘米", "约40厘米"], correct: 2, explanation: "约21-24厘米，而且正在加速！到2100年，预测范围30厘米到1米以上。沿海城市很紧张。", difficulty: 2, category: 'nature' },
-    { question: "亚马逊雨林每年大约吸收多少CO₂？", options: ["1亿吨", "5亿吨", "10亿吨", "20亿吨"], correct: 3, explanation: "约20亿吨！但森林砍伐正在把它变成碳排放源。拯救地球之肺！", difficulty: 3, category: 'nature' },
-    { question: "永久冻土融化会释放哪种危险气体？", options: ["只有CO₂", "甲烷", "氧化亚氮", "以上全部"], correct: 3, explanation: "三种都有！远古微生物苏醒后开始'派对'。这个反馈循环可能是灾难性的。", difficulty: 3, category: 'nature' },
-    { question: "珊瑚白化的主要原因是：", options: ["海洋酸化", "水温升高", "塑料污染", "过度捕捞"], correct: 1, explanation: "水温升高！即使升温1°C也会让珊瑚受压。大堡礁自1995年以来失去了一半珊瑚。", difficulty: 2, category: 'nature' },
-
-    // 综合
-    { question: "IPCC建议哪年前实现净零排放以限制1.5°C升温？", options: ["2030年", "2040年", "2050年", "2070年"], correct: 2, explanation: "全球2050年！但发达国家应2045年前达标。时钟正在大声滴答。", difficulty: 2, category: 'energy' },
-    { question: "哪个国家人均碳足迹最高？", options: ["中国", "美国", "印度", "德国"], correct: 1, explanation: "美国约15吨/年！卡塔尔和科威特更高，但美国3.3亿人×15吨=总量巨大。", difficulty: 1, category: 'consumption' },
-    { question: "甲烷在20年内的升温潜力是CO₂的多少倍？", options: ["约10倍", "约28倍", "约80倍", "约100倍"], correct: 2, explanation: "约80倍！但它约12年就分解。现在削减甲烷可以为我们争取时间。", difficulty: 3, category: 'nature' },
-    { question: "为控制在1.5°C以内，人均年碳足迹应低于：", options: ["10吨", "5吨", "2.5吨", "1吨"], correct: 2, explanation: "约2.3吨！全球平均4.7吨，美国人平均15吨。我们都需要快速减排。", difficulty: 2, category: 'consumption' },
-    { question: "牲畜排放的主要温室气体是什么？", options: ["呼吸产生的CO₂", "打嗝产生的甲烷", "粪便产生的一氧化二氮", "三者一样"], correct: 1, explanation: "肠道发酵产生的甲烷（就是牛打嗝）！一头牛=每年烧235升汽油。", difficulty: 1, category: 'food' },
+    {
+      question: "哪种食物碳足迹最高？",
+      options: ["大米", "牛肉", "鸡肉", "土豆"],
+      correct: 1,
+      explanation: "牛肉每公斤约60公斤CO₂。一头牛每天打约200升甲烷嗝。",
+      difficulty: 1,
+      category: 'food',
+      image: '/images/cow.jpg',
+      citation: "Poore, J., & Nemecek, T. (2018). Science, 360(6392), 987-992."
+    },
+    {
+      question: "纯素饮食减排约多少？",
+      options: ["10%", "30%", "50%", "75%"],
+      correct: 3,
+      explanation: "完全植物性饮食产生的温室气体排放量比肉食饮食大约低75%。",
+      difficulty: 1,
+      category: 'food',
+      image: '/images/vegan.jpg',
+      citation: "Poore, J., & Nemecek, T. (2018). Science, 360(6392), 987-992."
+    },
+    {
+      question: "咖啡和茶哪个碳足迹更大？",
+      options: ["咖啡", "茶", "一样", "看情况"],
+      correct: 0,
+      explanation: "咖啡碳足迹约为茶的3倍，主要因加工和长途运输。",
+      difficulty: 2,
+      category: 'food',
+      image: '/images/coffeebeans.jpg',
+      citation: "Ritchie, H., et al. Our World in Data: CO₂ and Greenhouse Gas Emissions."
+    },
+    {
+      question: "哪种植物奶最环保？",
+      options: ["杏仁奶", "燕麦奶", "豆奶", "米奶"],
+      correct: 1,
+      explanation: "燕麦奶综合土地、用水和排放最低。杏仁耗水量大。",
+      difficulty: 1,
+      category: 'food',
+      image: '/images/food.jpg',
+      citation: "Poore, J., & Nemecek, T. (2018). Science, 360(6392), 987-992."
+    },
+    {
+      question: "种植1公斤牛油果需多少水？",
+      options: ["约200升", "约1000升", "约2000升", "约5000升"],
+      correct: 2,
+      explanation: "约2000升，比普通人半年饮水量还多。",
+      difficulty: 3,
+      category: 'food',
+      image: '/images/avocado.jpg',
+      citation: "Mekonnen, M. M., & Hoekstra, A. Y. (2010). Water Footprint Network."
+    },
+    {
+      question: "哪种交通人均碳排放最低？",
+      options: ["飞机", "汽车", "火车", "公交"],
+      correct: 2,
+      explanation: "铁路仅约6克CO₂/人·公里，满载公交紧随其后。",
+      difficulty: 1,
+      category: 'transport',
+      image: '/images/train.jpg',
+      citation: "IEA. (2023). World Energy Outlook 2023."
+    },
+    {
+      question: "纽约往返伦敦一趟人均排放约？",
+      options: ["0.5吨", "1吨", "2吨", "5吨"],
+      correct: 1,
+      explanation: "约1吨，相当于可持续年碳预算的五分之一。",
+      difficulty: 2,
+      category: 'transport',
+      image: '/images/airplane.jpg',
+      citation: "ICAO Carbon Emissions Calculator."
+    },
+    {
+      question: "电动车排放主要来自哪里？",
+      options: ["排气管", "轮胎", "电网", "电池"],
+      correct: 2,
+      explanation: "电动车无排气管排放，但电网碳强度主导其全生命周期碳足迹。",
+      difficulty: 2,
+      category: 'transport',
+      image: '/images/ev.jpg',
+      citation: "IEA. (2023). World Energy Outlook 2023."
+    },
+    {
+      question: "有史以来塑料约多少被回收？",
+      options: ["约9%", "约25%", "约45%", "约60%"],
+      correct: 0,
+      explanation: "仅约9%。约79%堆积在垃圾填埋场或自然环境中。",
+      difficulty: 2,
+      category: 'consumption',
+      image: '/images/plastic.jpg',
+      citation: "OECD. (2022). Global Plastics Outlook."
+    },
+    {
+      question: "时尚产业占全球排放约多少？",
+      options: ["约2%", "约5%", "约10%", "约15%"],
+      correct: 2,
+      explanation: "约10%。一件棉T恤生产可能耗水2700升。",
+      difficulty: 1,
+      category: 'consumption',
+      image: '/images/fashion.jpg',
+      citation: "UNFCCC. (2018). Fashion Industry Charter for Climate Action."
+    },
+    {
+      question: "哪种能源全生命周期排放最低？",
+      options: ["太阳能", "风能", "水电", "核能"],
+      correct: 1,
+      explanation: "风能全生命周期平均约11克CO₂/千瓦时，远低于煤炭约820克。",
+      difficulty: 2,
+      category: 'energy',
+      image: '/images/wind.jpg',
+      citation: "IPCC. (2023). AR6 Synthesis Report."
+    },
+    {
+      question: "待机功耗占家庭用电约多少？",
+      options: ["约1%", "约5–10%", "约15%", "约30%"],
+      correct: 1,
+      explanation: "约5–10%。拔掉充电器、使用智能插排可减少浪费。",
+      difficulty: 2,
+      category: 'energy',
+      image: '/images/laptop.jpg',
+      citation: "IEA. (2023). World Energy Outlook 2023."
+    },
+    {
+      question: "抵消1吨CO₂每年需多少棵树？",
+      options: ["约5棵", "约15棵", "约50棵", "约100棵"],
+      correct: 2,
+      explanation: "约50棵成年树木。每棵每年通过光合作用吸收约22公斤CO₂。",
+      difficulty: 2,
+      category: 'nature',
+      image: '/images/forest.jpg',
+      citation: "One Tree Planted; U.S. EPA. Greenhouse Gas Equivalencies Calculator."
+    },
+    {
+      question: "自1900年海平面上升约？",
+      options: ["5厘米", "15厘米", "21–24厘米", "40厘米"],
+      correct: 2,
+      explanation: "约21–24厘米且加速。2100年预计30厘米至1米以上。",
+      difficulty: 2,
+      category: 'nature',
+      image: '/images/sealevel.jpg',
+      citation: "NASA; NOAA. (2023). Global Climate Report."
+    },
+    {
+      question: "珊瑚白化的主要原因是？",
+      options: ["海洋酸化", "水温升高", "塑料污染", "过度捕捞"],
+      correct: 1,
+      explanation: "水温升高。即使升温1°C也会让珊瑚受压，大堡礁自1995年失去一半珊瑚。",
+      difficulty: 3,
+      category: 'nature',
+      image: '/images/coral.jpg',
+      citation: "IPCC. (2023). AR6 Synthesis Report."
+    }
   ]
 }
 
-export function getQuizQuestions(lang, difficulty = 'all', category = 'all') {
-  let qs = quizQuestions[lang] || quizQuestions['en']
-  if (difficulty !== 'all') {
-    qs = qs.filter(q => q.difficulty === difficulty)
-  }
-  if (category !== 'all') {
-    qs = qs.filter(q => q.category === category)
-  }
-  return qs
-}
-
-export const difficultySettings = {
-  easy: { name: 'Easy', questions: 8, time: 20, label: { en: 'Easy', zh: '简单' } },
-  medium: { name: 'Medium', questions: 10, time: 15, label: { en: 'Medium', zh: '中等' } },
-  hard: { name: 'Hard', questions: 15, time: 10, label: { en: 'Hard', zh: '困难' } },
-}
-
-export const difficultyNames = {
-  en: ['Easy', 'Medium', 'Hard'],
-  zh: ['简单', '中等', '困难']
-}
-
-export function getDifficultyName(level, lang = 'en') {
-  const names = difficultyNames[lang] || difficultyNames['en']
-  return names[level - 1] || names[0]
+export function getQuizQuestions(lang) {
+  return quizQuestions[lang] || quizQuestions['en']
 }
 
 export const gradeInfo = {
@@ -149,7 +342,7 @@ export const funFacts = {
     "If everyone lived like Americans, we'd need 5 Earths!",
     "Cows have best friends and get stressed when separated.",
     "A single Google search emits ~0.2g of CO₂.",
-    "The Great Pacific Garbage Patch is 3x the size of France.",
+    "The Great Pacific Garbage Patch is 3× the size of France.",
     "Your phone charge uses about the same energy as a kettle boil... over a whole year!",
     "Termites produce more methane than all livestock combined.",
     "The color of your roof affects cooling costs. White roofs reflect heat!",
@@ -167,21 +360,89 @@ export const funFacts = {
   ]
 }
 
-export const achievements = {
+// Carbon Seedling Growth Stages — reward system replacing achievements
+export const treeStages = {
   en: [
-    { id: 'first_game', icon: '🌱', name: 'First Steps', desc: 'Complete your first quiz' },
-    { id: 'combo_5', icon: '🔥', name: 'Combo Master', desc: 'Reach a 5x combo' },
-    { id: 'speed_demon', icon: '⚡', name: 'Speed Demon', desc: 'Answer correctly in under 3 seconds' },
-    { id: 'perfect', icon: '🎯', name: 'Perfectionist', desc: 'Get every question right' },
-    { id: 's_rank', icon: '🏆', name: 'Planet Guardian', desc: 'Achieve S rank' },
-    { id: 'hard_mode', icon: '💀', name: 'Survivor', desc: 'Complete Hard mode' },
+    { min: 0, max: 300, icon: '🌱', name: 'Carbon Seed', desc: 'Your seed is planted. Every correct answer waters it!' },
+    { min: 301, max: 700, icon: '🌿', name: 'Green Sprout', desc: 'Breaking through the soil! Keep the knowledge flowing.' },
+    { min: 701, max: 1200, icon: '🌳', name: 'Mighty Sapling', desc: 'Growing stronger. Your choices are making a difference.' },
+    { min: 1201, max: 1800, icon: '🌲', name: 'Carbon Tree', desc: 'A full carbon sink! Your knowledge is truly impressive.' },
+    { min: 1801, max: 99999, icon: '🌳✨', name: 'Ancient Guardian', desc: 'Legendary! Your forest cleans the air for generations.' },
   ],
   zh: [
-    { id: 'first_game', icon: '🌱', name: '初次觉醒', desc: '完成第一次测验' },
-    { id: 'combo_5', icon: '🔥', name: '连击大师', desc: '达成5连击' },
-    { id: 'speed_demon', icon: '⚡', name: '闪电思维', desc: '3秒内答对一题' },
-    { id: 'perfect', icon: '🎯', name: '完美主义', desc: '全部答对' },
-    { id: 's_rank', icon: '🏆', name: '地球守护者', desc: '获得S评级' },
-    { id: 'hard_mode', icon: '💀', name: '幸存者', desc: '完成困难模式' },
+    { min: 0, max: 300, icon: '🌱', name: '碳之种子', desc: '种子已种下，每答对一题都在浇灌它！' },
+    { min: 301, max: 700, icon: '🌿', name: '绿色嫩芽', desc: '破土而出！让知识继续流动。' },
+    { min: 701, max: 1200, icon: '🌳', name: '茁壮树苗', desc: '越来越强。你的选择正在改变世界。' },
+    { min: 1201, max: 1800, icon: '🌲', name: '碳汇之树', desc: '完整的碳汇！你的知识令人钦佩。' },
+    { min: 1801, max: 99999, icon: '🌳✨', name: '古树守护者', desc: '传奇！你的森林为后代净化空气。' },
   ]
 }
+
+export function getTreeStage(score, lang = 'en') {
+  const stages = treeStages[lang] || treeStages['en']
+  return stages.find(s => score >= s.min && score <= s.max) || stages[stages.length - 1]
+}
+
+// CO₂ savings per correct answer (fictional but fun metric)
+export const CO2_PER_CORRECT = 12 // kg
+
+// Knowledge level system (persistent across games)
+export const knowledgeLevels = {
+  en: [
+    { min: 0, name: 'Seedling', desc: 'Just getting started' },
+    { min: 10, name: 'Sprout', desc: 'Growing curiosity' },
+    { min: 30, name: 'Sapling', desc: 'Building knowledge' },
+    { min: 60, name: 'Tree', desc: 'Well-rooted understanding' },
+    { min: 100, name: 'Guardian', desc: 'Climate champion' },
+  ],
+  zh: [
+    { min: 0, name: '幼苗', desc: '刚刚开始' },
+    { min: 10, name: '嫩芽', desc: '好奇心在萌发' },
+    { min: 30, name: '树苗', desc: '知识在积累' },
+    { min: 60, name: '大树', desc: '根基扎实' },
+    { min: 100, name: '守护者', desc: '气候冠军' },
+  ]
+}
+
+export function getKnowledgeLevel(totalCorrect, lang = 'en') {
+  const levels = knowledgeLevels[lang] || knowledgeLevels['en']
+  // Find the highest level the user has reached
+  let current = levels[0]
+  for (const lvl of levels) {
+    if (totalCorrect >= lvl.min) current = lvl
+  }
+  // Find next level
+  const currentIdx = levels.indexOf(current)
+  const next = levels[currentIdx + 1] || null
+  const progressToNext = next ? Math.min(100, Math.round(((totalCorrect - current.min) / (next.min - current.min)) * 100)) : 100
+  return { current, next, progressToNext, totalCorrect }
+}
+
+export const failMemes = {
+  en: [
+    { top: "FAILURE", bottom: "is the mother of success", bg: "/images/cow.jpg", mascot: "sad" },
+    { top: "EVERY EXPERT", bottom: "was once a beginner", bg: "/images/bike.jpg", mascot: "think" },
+    { top: "IT'S OKAY", bottom: "the planet still loves you", bg: "/images/earth.jpg", mascot: "wave" },
+    { top: "OOPS", bottom: "even corals get stressed", bg: "/images/coral.jpg", mascot: "sad" },
+    { top: "KEEP GOING", bottom: "you're saving watts of knowledge", bg: "/images/energy.jpg", mascot: "think" },
+    { top: "NICE TRY", bottom: "trees grow through storms", bg: "/images/forest.jpg", mascot: "wave" },
+    { top: "NOT QUITE", bottom: "but every answer teaches", bg: "/images/wind.jpg", mascot: "think" },
+  ],
+  zh: [
+    { top: "失败", bottom: "是成功之母", bg: "/images/cow.jpg", mascot: "sad" },
+    { top: "每个专家", bottom: "都曾是初学者", bg: "/images/bike.jpg", mascot: "think" },
+    { top: "没关系", bottom: "地球依然爱你", bg: "/images/earth.jpg", mascot: "wave" },
+    { top: "哎呀", bottom: "珊瑚也会有压力", bg: "/images/coral.jpg", mascot: "sad" },
+    { top: "继续加油", bottom: "你在积累碳知识", bg: "/images/energy.jpg", mascot: "think" },
+    { top: "不错哦", bottom: "树木在风雨中成长", bg: "/images/forest.jpg", mascot: "wave" },
+    { top: "差一点", bottom: "但每个答案都在教你", bg: "/images/wind.jpg", mascot: "think" },
+  ]
+}
+
+export const worksCited = [
+  "IPCC. (2023). AR6 Synthesis Report. Intergovernmental Panel on Climate Change.",
+  "Poore, J., & Nemecek, T. (2018). Reducing food's environmental impacts through producers and consumers. Science, 360(6392), 987-992.",
+  "Friedlingstein, P., et al. (2023). Global Carbon Budget 2023. Earth System Science Data, 15(12), 5301-5365.",
+  "Ritchie, H., Roser, M., & Ortiz-Ospina, E. Our World in Data: CO₂ and Greenhouse Gas Emissions. https://ourworldindata.org/co2-and-greenhouse-gas-emissions",
+  "IEA. (2023). World Energy Outlook 2023. International Energy Agency."
+]
