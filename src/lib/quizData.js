@@ -12,7 +12,7 @@ export const quizQuestions = {
       explanation: "Beef produces ~60 kg CO₂ per kg. One cow burps 200 litres of methane daily.",
       difficulty: 1,
       category: 'food',
-      image: '/images/cow.jpg',
+      image: './images/cow.jpg',
       citation: "Poore, J., & Nemecek, T. (2018). Reducing food's environmental impacts. Science, 360(6392), 987-992."
     },
     {
@@ -22,7 +22,7 @@ export const quizQuestions = {
       explanation: "A fully plant-based diet produces roughly 75% fewer greenhouse-gas emissions than a meat-rich diet.",
       difficulty: 1,
       category: 'food',
-      image: '/images/vegan.jpg',
+      image: './images/vegan.jpg',
       citation: "Poore, J., & Nemecek, T. (2018). Science, 360(6392), 987-992."
     },
     {
@@ -32,7 +32,7 @@ export const quizQuestions = {
       explanation: "Coffee's footprint is roughly 3× that of tea, due to processing and long-distance transport.",
       difficulty: 2,
       category: 'food',
-      image: '/images/coffeebeans.jpg',
+      image: './images/coffeebeans.jpg',
       citation: "Ritchie, H., et al. Our World in Data: CO₂ and Greenhouse Gas Emissions."
     },
     {
@@ -42,7 +42,7 @@ export const quizQuestions = {
       explanation: "Oat milk has the lowest combined land use, water use and emissions. Almonds are water-intensive.",
       difficulty: 1,
       category: 'food',
-      image: '/images/food.jpg',
+      image: './images/food.jpg',
       citation: "Poore, J., & Nemecek, T. (2018). Science, 360(6392), 987-992."
     },
     {
@@ -52,7 +52,7 @@ export const quizQuestions = {
       explanation: "About 2,000 litres per kg — more drinking water than most people consume in six months.",
       difficulty: 3,
       category: 'food',
-      image: '/images/avocado.jpg',
+      image: './images/avocado.jpg',
       citation: "Mekonnen, M. M., & Hoekstra, A. Y. (2010). Water Footprint Network."
     },
     {
@@ -62,7 +62,7 @@ export const quizQuestions = {
       explanation: "Rail emits only ~6 g CO₂ per passenger km. A full bus is a close second.",
       difficulty: 1,
       category: 'transport',
-      image: '/images/train.jpg',
+      image: './images/train.jpg',
       citation: "IEA. (2023). World Energy Outlook 2023."
     },
     {
@@ -72,7 +72,7 @@ export const quizQuestions = {
       explanation: "~1 tonne per passenger. That is roughly one-fifth of a sustainable annual carbon budget.",
       difficulty: 2,
       category: 'transport',
-      image: '/images/airplane.jpg',
+      image: './images/airplane.jpg',
       citation: "ICAO Carbon Emissions Calculator."
     },
     {
@@ -82,7 +82,7 @@ export const quizQuestions = {
       explanation: "EVs have no tailpipe, but the carbon intensity of the electricity grid dominates their footprint.",
       difficulty: 2,
       category: 'transport',
-      image: '/images/ev.jpg',
+      image: './images/ev.jpg',
       citation: "IEA. (2023). World Energy Outlook 2023."
     },
     {
@@ -92,7 +92,7 @@ export const quizQuestions = {
       explanation: "Only ~9%. Roughly 79% has accumulated in landfills or the natural environment.",
       difficulty: 2,
       category: 'consumption',
-      image: '/images/plastic.jpg',
+      image: './images/plastic.jpg',
       citation: "OECD. (2022). Global Plastics Outlook: Policy Scenarios to 2060."
     },
     {
@@ -102,7 +102,7 @@ export const quizQuestions = {
       explanation: "~10%. A single cotton T-shirt can require 2,700 litres of water to produce.",
       difficulty: 1,
       category: 'consumption',
-      image: '/images/fashion.jpg',
+      image: './images/fashion.jpg',
       citation: "UNFCCC. (2018). Fashion Industry Charter for Climate Action."
     },
     {
@@ -112,7 +112,7 @@ export const quizQuestions = {
       explanation: "Wind averages ~11 g CO₂ per kWh across its full lifecycle, far below coal (~820 g).",
       difficulty: 2,
       category: 'energy',
-      image: '/images/wind.jpg',
+      image: './images/wind.jpg',
       citation: "IPCC. (2023). AR6 Synthesis Report."
     },
     {
@@ -122,7 +122,7 @@ export const quizQuestions = {
       explanation: "~5–10%. Unplugging chargers and using smart power strips cuts this waste.",
       difficulty: 2,
       category: 'energy',
-      image: '/images/laptop.jpg',
+      image: './images/laptop.jpg',
       citation: "IEA. (2023). World Energy Outlook 2023."
     },
     {
@@ -132,7 +132,7 @@ export const quizQuestions = {
       explanation: "~50 mature trees. Each absorbs roughly 22 kg of CO₂ per year through photosynthesis.",
       difficulty: 2,
       category: 'nature',
-      image: '/images/forest.jpg',
+      image: './images/forest.jpg',
       citation: "One Tree Planted; U.S. EPA. Greenhouse Gas Equivalencies Calculator."
     },
     {
@@ -142,7 +142,7 @@ export const quizQuestions = {
       explanation: "~21–24 cm and accelerating. By 2100: 30 cm to 1 m+ under high-emission scenarios.",
       difficulty: 2,
       category: 'nature',
-      image: '/images/sealevel.jpg',
+      image: './images/sealevel.jpg',
       citation: "NASA; NOAA. (2023). Global Climate Report."
     },
     {
@@ -152,7 +152,7 @@ export const quizQuestions = {
       explanation: "Warmer water. Even 1°C rise stresses corals. The Great Barrier Reef has lost half since 1995.",
       difficulty: 3,
       category: 'nature',
-      image: '/images/coral.jpg',
+      image: './images/coral.jpg',
       citation: "IPCC. (2023). AR6 Synthesis Report."
     }
   ],
@@ -165,7 +165,7 @@ export const quizQuestions = {
       explanation: "牛肉每公斤约60公斤CO₂。一头牛每天打约200升甲烷嗝。",
       difficulty: 1,
       category: 'food',
-      image: '/images/cow.jpg',
+      image: './images/cow.jpg',
       citation: "Poore, J., & Nemecek, T. (2018). Science, 360(6392), 987-992."
     },
     {
@@ -175,7 +175,7 @@ export const quizQuestions = {
       explanation: "完全植物性饮食产生的温室气体排放量比肉食饮食大约低75%。",
       difficulty: 1,
       category: 'food',
-      image: '/images/vegan.jpg',
+      image: './images/vegan.jpg',
       citation: "Poore, J., & Nemecek, T. (2018). Science, 360(6392), 987-992."
     },
     {
@@ -185,7 +185,7 @@ export const quizQuestions = {
       explanation: "咖啡碳足迹约为茶的3倍，主要因加工和长途运输。",
       difficulty: 2,
       category: 'food',
-      image: '/images/coffeebeans.jpg',
+      image: './images/coffeebeans.jpg',
       citation: "Ritchie, H., et al. Our World in Data: CO₂ and Greenhouse Gas Emissions."
     },
     {
@@ -195,7 +195,7 @@ export const quizQuestions = {
       explanation: "燕麦奶综合土地、用水和排放最低。杏仁耗水量大。",
       difficulty: 1,
       category: 'food',
-      image: '/images/food.jpg',
+      image: './images/food.jpg',
       citation: "Poore, J., & Nemecek, T. (2018). Science, 360(6392), 987-992."
     },
     {
@@ -205,7 +205,7 @@ export const quizQuestions = {
       explanation: "约2000升，比普通人半年饮水量还多。",
       difficulty: 3,
       category: 'food',
-      image: '/images/avocado.jpg',
+      image: './images/avocado.jpg',
       citation: "Mekonnen, M. M., & Hoekstra, A. Y. (2010). Water Footprint Network."
     },
     {
@@ -215,7 +215,7 @@ export const quizQuestions = {
       explanation: "铁路仅约6克CO₂/人·公里，满载公交紧随其后。",
       difficulty: 1,
       category: 'transport',
-      image: '/images/train.jpg',
+      image: './images/train.jpg',
       citation: "IEA. (2023). World Energy Outlook 2023."
     },
     {
@@ -225,7 +225,7 @@ export const quizQuestions = {
       explanation: "约1吨，相当于可持续年碳预算的五分之一。",
       difficulty: 2,
       category: 'transport',
-      image: '/images/airplane.jpg',
+      image: './images/airplane.jpg',
       citation: "ICAO Carbon Emissions Calculator."
     },
     {
@@ -235,7 +235,7 @@ export const quizQuestions = {
       explanation: "电动车无排气管排放，但电网碳强度主导其全生命周期碳足迹。",
       difficulty: 2,
       category: 'transport',
-      image: '/images/ev.jpg',
+      image: './images/ev.jpg',
       citation: "IEA. (2023). World Energy Outlook 2023."
     },
     {
@@ -245,7 +245,7 @@ export const quizQuestions = {
       explanation: "仅约9%。约79%堆积在垃圾填埋场或自然环境中。",
       difficulty: 2,
       category: 'consumption',
-      image: '/images/plastic.jpg',
+      image: './images/plastic.jpg',
       citation: "OECD. (2022). Global Plastics Outlook."
     },
     {
@@ -255,7 +255,7 @@ export const quizQuestions = {
       explanation: "约10%。一件棉T恤生产可能耗水2700升。",
       difficulty: 1,
       category: 'consumption',
-      image: '/images/fashion.jpg',
+      image: './images/fashion.jpg',
       citation: "UNFCCC. (2018). Fashion Industry Charter for Climate Action."
     },
     {
@@ -265,7 +265,7 @@ export const quizQuestions = {
       explanation: "风能全生命周期平均约11克CO₂/千瓦时，远低于煤炭约820克。",
       difficulty: 2,
       category: 'energy',
-      image: '/images/wind.jpg',
+      image: './images/wind.jpg',
       citation: "IPCC. (2023). AR6 Synthesis Report."
     },
     {
@@ -275,7 +275,7 @@ export const quizQuestions = {
       explanation: "约5–10%。拔掉充电器、使用智能插排可减少浪费。",
       difficulty: 2,
       category: 'energy',
-      image: '/images/laptop.jpg',
+      image: './images/laptop.jpg',
       citation: "IEA. (2023). World Energy Outlook 2023."
     },
     {
@@ -285,7 +285,7 @@ export const quizQuestions = {
       explanation: "约50棵成年树木。每棵每年通过光合作用吸收约22公斤CO₂。",
       difficulty: 2,
       category: 'nature',
-      image: '/images/forest.jpg',
+      image: './images/forest.jpg',
       citation: "One Tree Planted; U.S. EPA. Greenhouse Gas Equivalencies Calculator."
     },
     {
@@ -295,7 +295,7 @@ export const quizQuestions = {
       explanation: "约21–24厘米且加速。2100年预计30厘米至1米以上。",
       difficulty: 2,
       category: 'nature',
-      image: '/images/sealevel.jpg',
+      image: './images/sealevel.jpg',
       citation: "NASA; NOAA. (2023). Global Climate Report."
     },
     {
@@ -305,7 +305,7 @@ export const quizQuestions = {
       explanation: "水温升高。即使升温1°C也会让珊瑚受压，大堡礁自1995年失去一半珊瑚。",
       difficulty: 3,
       category: 'nature',
-      image: '/images/coral.jpg',
+      image: './images/coral.jpg',
       citation: "IPCC. (2023). AR6 Synthesis Report."
     }
   ]
@@ -420,22 +420,22 @@ export function getKnowledgeLevel(totalCorrect, lang = 'en') {
 
 export const failMemes = {
   en: [
-    { top: "FAILURE", bottom: "is the mother of success", bg: "/images/cow.jpg", mascot: "sad" },
-    { top: "EVERY EXPERT", bottom: "was once a beginner", bg: "/images/bike.jpg", mascot: "think" },
-    { top: "IT'S OKAY", bottom: "the planet still loves you", bg: "/images/earth.jpg", mascot: "wave" },
-    { top: "OOPS", bottom: "even corals get stressed", bg: "/images/coral.jpg", mascot: "sad" },
-    { top: "KEEP GOING", bottom: "you're saving watts of knowledge", bg: "/images/energy.jpg", mascot: "think" },
-    { top: "NICE TRY", bottom: "trees grow through storms", bg: "/images/forest.jpg", mascot: "wave" },
-    { top: "NOT QUITE", bottom: "but every answer teaches", bg: "/images/wind.jpg", mascot: "think" },
+    { top: "FAILURE", bottom: "is the mother of success", bg: "./images/cow.jpg", mascot: "sad" },
+    { top: "EVERY EXPERT", bottom: "was once a beginner", bg: "./images/bike.jpg", mascot: "think" },
+    { top: "IT'S OKAY", bottom: "the planet still loves you", bg: "./images/earth.jpg", mascot: "wave" },
+    { top: "OOPS", bottom: "even corals get stressed", bg: "./images/coral.jpg", mascot: "sad" },
+    { top: "KEEP GOING", bottom: "you're saving watts of knowledge", bg: "./images/energy.jpg", mascot: "think" },
+    { top: "NICE TRY", bottom: "trees grow through storms", bg: "./images/forest.jpg", mascot: "wave" },
+    { top: "NOT QUITE", bottom: "but every answer teaches", bg: "./images/wind.jpg", mascot: "think" },
   ],
   zh: [
-    { top: "失败", bottom: "是成功之母", bg: "/images/cow.jpg", mascot: "sad" },
-    { top: "每个专家", bottom: "都曾是初学者", bg: "/images/bike.jpg", mascot: "think" },
-    { top: "没关系", bottom: "地球依然爱你", bg: "/images/earth.jpg", mascot: "wave" },
-    { top: "哎呀", bottom: "珊瑚也会有压力", bg: "/images/coral.jpg", mascot: "sad" },
-    { top: "继续加油", bottom: "你在积累碳知识", bg: "/images/energy.jpg", mascot: "think" },
-    { top: "不错哦", bottom: "树木在风雨中成长", bg: "/images/forest.jpg", mascot: "wave" },
-    { top: "差一点", bottom: "但每个答案都在教你", bg: "/images/wind.jpg", mascot: "think" },
+    { top: "失败", bottom: "是成功之母", bg: "./images/cow.jpg", mascot: "sad" },
+    { top: "每个专家", bottom: "都曾是初学者", bg: "./images/bike.jpg", mascot: "think" },
+    { top: "没关系", bottom: "地球依然爱你", bg: "./images/earth.jpg", mascot: "wave" },
+    { top: "哎呀", bottom: "珊瑚也会有压力", bg: "./images/coral.jpg", mascot: "sad" },
+    { top: "继续加油", bottom: "你在积累碳知识", bg: "./images/energy.jpg", mascot: "think" },
+    { top: "不错哦", bottom: "树木在风雨中成长", bg: "./images/forest.jpg", mascot: "wave" },
+    { top: "差一点", bottom: "但每个答案都在教你", bg: "./images/wind.jpg", mascot: "think" },
   ]
 }
 

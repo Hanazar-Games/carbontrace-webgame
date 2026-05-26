@@ -19,10 +19,7 @@ export default function Navbar({ onOpenVersion }) {
   const currentLang = languages.find((l) => l.code === lang) || languages[0]
 
   const links = [
-    { label: t.navbar.problem, href: '#problem' },
-    { label: t.navbar.features, href: '#features' },
     { label: t.navbar.calculator || 'Quiz', href: '#quiz' },
-    { label: t.navbar.impact, href: '#impact' },
   ]
 
   return (
