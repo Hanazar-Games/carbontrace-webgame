@@ -1,33 +1,15 @@
 import { useState, useEffect, useCallback, useRef, useMemo } from 'react'
-import { AnimatePresence } from 'framer-motion'
-import {
-  Play, RotateCcw, Heart, Zap, Timer, Trophy,
-  Flame, ChevronRight, Star, Sparkles, Skull,
-  PartyPopper, Leaf, TreePine
-} from 'lucide-react'
 import { useLanguage } from '../context/LanguageContext'
 import { getQuizQuestions, getGradeInfo, worksCited, categories, getTreeStage, CO2_PER_CORRECT, getKnowledgeLevel } from '../lib/quizData'
 import Mascot from './ui/Mascot'
+import {
+  Play, RotateCcw, Zap, Timer, Trophy,
+  Flame, ChevronRight, Star, Sparkles,
+  PartyPopper, Leaf, TreePine
+} from 'lucide-react'
 
-const MAX_LIVES = 3
 const TOTAL_QUESTIONS = 15
 const TIME_PER_QUESTION = 15
-
-function Lives({ lives, maxLives }) {
-  return (
-    <div className="flex items-center gap-1.5">
-      {Array.from({ length: maxLives }).map((_, i) => (
-        <div key={i}>
-          {i < lives ? (
-            <Heart className="w-5 h-5 text-rose-500 fill-rose-500" />
-          ) : (
-            <Heart className="w-5 h-5 text-slate-700" />
-          )}
-        </div>
-      ))}
-    </div>
-  )
-}
 
 function ComboDisplay({ combo }) {
   if (combo < 3) return null
@@ -142,12 +124,10 @@ function shuffleArray(arr) {
 export default function QuizGame() {
   const { t, lang } = useLanguage()
 
-  // Game state
   const [gameState, setGameState] = useState('start')
   const [questions, setQuestions] = useState([])
   const [currentQ, setCurrentQ] = useState(0)
   const [score, setScore] = useState(0)
-  const [lives, setLives] = useState(MAX_LIVES)
   const [combo, setCombo] = useState(0)
   const [maxCombo, setMaxCombo] = useState(0)
   const [timeLeft, setTimeLeft] = useState(TIME_PER_QUESTION)
@@ -165,34 +145,25 @@ export default function QuizGame() {
   const questionStartTime = useRef(null)
   const timerIntervalRef = useRef(null)
 
-  // High scores from localStorage
   const [highScores, setHighScores] = useState(() => {
     if (typeof window === 'undefined') return {}
-    try {
-      return JSON.parse(localStorage.getItem('carbontrace-highscores') || '{}')
-    } catch { return {} }
+    try { return JSON.parse(localStorage.getItem('carbontrace-highscores') || '{}') } catch { return {} }
   })
   const [totalCarbonSavedAllTime, setTotalCarbonSavedAllTime] = useState(() => {
     if (typeof window === 'undefined') return 0
-    try {
-      return parseInt(localStorage.getItem('carbontrace-total-co2') || '0', 10)
-    } catch { return 0 }
+    try { return parseInt(localStorage.getItem('carbontrace-total-co2') || '0', 10) } catch { return 0 }
   })
   const [totalCorrectAllTime, setTotalCorrectAllTime] = useState(() => {
     if (typeof window === 'undefined') return 0
-    try {
-      return parseInt(localStorage.getItem('carbontrace-total-correct') || '0', 10)
-    } catch { return 0 }
+    try { return parseInt(localStorage.getItem('carbontrace-total-correct') || '0', 10) } catch { return 0 }
   })
 
   const allQuestions = useMemo(() => getQuizQuestions(lang), [lang])
 
   const startGame = useCallback(() => {
-    const shuffled = shuffleArray(allQuestions)
-    setQuestions(shuffled)
+    setQuestions(shuffleArray(allQuestions))
     setCurrentQ(0)
     setScore(0)
-    setLives(MAX_LIVES)
     setCombo(0)
     setMaxCombo(0)
     setTimeLeft(TIME_PER_QUESTION)
@@ -210,36 +181,22 @@ export default function QuizGame() {
     setGameState('playing')
   }, [allQuestions])
 
-  // Timer
   useEffect(() => {
     if (gameState !== 'playing' || isRevealed) {
-      if (timerIntervalRef.current) {
-        clearInterval(timerIntervalRef.current)
-        timerIntervalRef.current = null
-      }
+      if (timerIntervalRef.current) { clearInterval(timerIntervalRef.current); timerIntervalRef.current = null }
       return
     }
-
     timerIntervalRef.current = setInterval(() => {
       setTimeLeft(prev => {
         const next = prev - 1
         timeLeftRef.current = next
-        if (next <= 0) {
-          return 0
-        }
+        if (next <= 0) return 0
         return next
       })
     }, 1000)
-
-    return () => {
-      if (timerIntervalRef.current) {
-        clearInterval(timerIntervalRef.current)
-        timerIntervalRef.current = null
-      }
-    }
+    return () => { if (timerIntervalRef.current) { clearInterval(timerIntervalRef.current); timerIntervalRef.current = null } }
   }, [gameState, isRevealed])
 
-  // Handle time out
   useEffect(() => {
     if (timeLeft === 0 && gameState === 'playing' && !isRevealedRef.current) {
       isRevealedRef.current = true
@@ -249,30 +206,18 @@ export default function QuizGame() {
       setCombo(0)
       setMascotMood('sad')
       setFeedbackText(lang === 'zh' ? '时间到！⏰' : 'Time\'s up! ⏰')
-
-      const newLives = lives - 1
-      setLives(newLives)
-      if (newLives <= 0) {
-        setMascotMood('shock')
-      }
-
       setShake(true)
       setTimeout(() => setShake(false), 400)
     }
-  }, [timeLeft, gameState, lives, lang])
+  }, [timeLeft, gameState, lang])
 
   const handleAnswer = useCallback((optionIndex) => {
     if (isRevealedRef.current) return
     isRevealedRef.current = true
-
     setSelectedOption(optionIndex)
     setIsRevealed(true)
     setQuestionsAnswered(prev => prev + 1)
-
-    if (timerIntervalRef.current) {
-      clearInterval(timerIntervalRef.current)
-      timerIntervalRef.current = null
-    }
+    if (timerIntervalRef.current) { clearInterval(timerIntervalRef.current); timerIntervalRef.current = null }
 
     const q = questions[currentQ]
     if (!q) return
@@ -282,19 +227,14 @@ export default function QuizGame() {
       const newCombo = combo + 1
       setCombo(newCombo)
       if (newCombo > maxCombo) setMaxCombo(newCombo)
-
       const currentTimeLeft = timeLeftRef.current
       const timeBonus = Math.round((currentTimeLeft / TIME_PER_QUESTION) * 50)
       const comboBonus = newCombo >= 3 ? (newCombo - 2) * 20 : 0
-      const basePoints = 100
-      const points = basePoints + timeBonus + comboBonus
-
+      const points = 100 + timeBonus + comboBonus
       setScore(s => s + points)
       setCorrectCount(c => c + 1)
       setCarbonSaved(c => c + CO2_PER_CORRECT)
-
       setMascotMood(newCombo >= 5 ? 'excited' : 'happy')
-
       const fb = lang === 'zh'
         ? ['正确！', '太棒了！', '连连看！', '不可思议！', '大师级！']
         : ['Correct!', 'Nice!', 'On fire!', 'Amazing!', 'Legendary!']
@@ -306,31 +246,19 @@ export default function QuizGame() {
         ? ['哎呀，不对', '再想想', '加油！', '别灰心']
         : ['Oops, not quite', 'Think again', 'Keep going!', 'Don\'t give up']
       setFeedbackText(fbWrong[Math.floor(Math.random() * fbWrong.length)])
-
-      const newLives = lives - 1
-      setLives(newLives)
-      if (newLives <= 0) {
-        setMascotMood('shock')
-      }
-
       setShake(true)
       setTimeout(() => setShake(false), 400)
     }
-  }, [questions, currentQ, combo, maxCombo, lives, lang])
+  }, [questions, currentQ, combo, maxCombo, lang])
 
   const saveGameStats = useCallback(() => {
-    const finalScore = score
     const key = `${lang}`
     const prevHigh = highScores[key] || 0
-    const isNewHigh = finalScore > prevHigh
-    if (isNewHigh) {
-      const newHighs = { ...highScores, [key]: finalScore }
+    if (score > prevHigh) {
+      const newHighs = { ...highScores, [key]: score }
       setHighScores(newHighs)
-      if (typeof window !== 'undefined') {
-        localStorage.setItem('carbontrace-highscores', JSON.stringify(newHighs))
-      }
+      if (typeof window !== 'undefined') localStorage.setItem('carbontrace-highscores', JSON.stringify(newHighs))
     }
-
     const newTotalCO2 = totalCarbonSavedAllTime + carbonSaved
     const newTotalCorrect = totalCorrectAllTime + correctCount
     setTotalCarbonSavedAllTime(newTotalCO2)
@@ -343,20 +271,12 @@ export default function QuizGame() {
   }, [score, lang, highScores, carbonSaved, totalCarbonSavedAllTime, correctCount, totalCorrectAllTime])
 
   const nextQuestion = useCallback(() => {
-    if (lives <= 0) {
-      saveGameStats()
-      setGameState('result')
-      setMascotMood('sad')
-      return
-    }
-
     if (currentQ + 1 >= TOTAL_QUESTIONS) {
       saveGameStats()
       setGameState('result')
       setMascotMood('happy')
       return
     }
-
     setCurrentQ(c => c + 1)
     setSelectedOption(null)
     setIsRevealed(false)
@@ -366,12 +286,11 @@ export default function QuizGame() {
     setMascotMood('think')
     setFeedbackText('')
     questionStartTime.current = Date.now()
-  }, [currentQ, lives, saveGameStats])
+  }, [currentQ, saveGameStats])
 
   const progress = ((currentQ + 1) / TOTAL_QUESTIONS) * 100
   const accuracy = questionsAnswered > 0 ? Math.round((correctCount / questionsAnswered) * 100) : 0
   const grade = useMemo(() => getGradeInfo(accuracy, lang), [accuracy, lang])
-  const isWin = lives > 0 && currentQ + 1 >= TOTAL_QUESTIONS
   const q = questions[currentQ]
   const treeStage = useMemo(() => getTreeStage(score, lang), [score, lang])
   const resultTotalCO2 = resultStats.co2
@@ -384,19 +303,16 @@ export default function QuizGame() {
     const prevHigh = highScores[`${lang}`] || 0
     const prevStage = getTreeStage(prevHigh, lang)
     const prevTrees = Math.max(1, Math.round(totalCarbonSavedAllTime / 22))
-
     return (
       <section id="quiz" className="px-6 py-24 bg-slate-950 min-h-[80vh] flex items-center">
         <div className="max-w-xl mx-auto text-center">
           <div className="text-5xl mb-4">{prevStage.icon}</div>
-
           <h2 className="text-3xl font-bold tracking-tight text-white sm:text-4xl">
             {t.quiz?.title || 'Carbon Quiz Challenge'}
           </h2>
           <p className="max-w-md mx-auto mt-4 text-base text-slate-400 leading-relaxed">
             {t.quiz?.subtitle || 'Test your carbon knowledge. Score points, build combos, and become a Planet Guardian!'}
           </p>
-
           {prevHigh > 0 && (
             <div className="mt-4 flex items-center justify-center gap-3 text-sm text-slate-500">
               <span className="inline-flex items-center gap-1.5 px-3 py-1 rounded-full bg-slate-900 border border-slate-800">
@@ -409,7 +325,6 @@ export default function QuizGame() {
               </span>
             </div>
           )}
-
           <button
             onClick={startGame}
             className="mt-8 inline-flex items-center gap-2 px-10 py-4 text-lg font-bold text-white rounded-full bg-emerald-600 hover:bg-emerald-500 transition-colors"
@@ -427,26 +342,19 @@ export default function QuizGame() {
     const key = `${lang}`
     const prevHigh = highScores[key] || 0
     const isNewHigh = score > 0 && score > prevHigh
-
     return (
       <section id="quiz" className="px-6 py-20 bg-slate-950 min-h-screen flex items-center">
         <div className="max-w-lg mx-auto text-center">
           <div className="flex justify-center mb-4">
-            <Mascot mood={isWin ? (accuracy >= 90 ? 'excited' : 'happy') : 'sad'} size={80} />
+            <Mascot mood={accuracy >= 90 ? 'excited' : accuracy >= 60 ? 'happy' : 'sad'} size={80} />
           </div>
 
           <div className="inline-flex items-center justify-center w-24 h-24 rounded-2xl bg-slate-900 border border-slate-800 mb-5">
-            <span className={`text-5xl font-bold ${isWin ? grade.color : 'text-rose-500'}`}>
-              {isWin ? grade.grade : <Skull className="w-12 h-12 text-rose-500" />}
-            </span>
+            <span className={`text-5xl font-bold ${grade.color}`}>{grade.grade}</span>
           </div>
 
-          <h2 className={`text-3xl font-bold ${isWin ? grade.color : 'text-rose-500'}`}>
-            {isWin ? grade.title : (t.quiz?.gameOver || 'Game Over!')}
-          </h2>
-          <p className="mt-2 text-slate-400 text-base">
-            {isWin ? grade.desc : (t.quiz?.outOfLives || 'You ran out of lives.')}
-          </p>
+          <h2 className={`text-3xl font-bold ${grade.color}`}>{grade.title}</h2>
+          <p className="mt-2 text-slate-400 text-base">{grade.desc}</p>
 
           {/* Stats */}
           <div className="grid grid-cols-2 gap-3 mt-6">
@@ -456,10 +364,7 @@ export default function QuizGame() {
               { label: t.quiz?.maxComboLabel || 'Max Combo', value: `x${maxCombo}`, icon: Flame, color: 'text-orange-500' },
               { label: t.quiz?.correctLabel || 'Correct', value: `${correctCount}/${questionsAnswered}`, icon: Zap, color: 'text-cyan-500' },
             ].map((item, i) => (
-              <div
-                key={i}
-                className="p-4 rounded-xl bg-slate-900 border border-slate-800 text-center"
-              >
+              <div key={i} className="p-4 rounded-xl bg-slate-900 border border-slate-800 text-center">
                 <item.icon className={`w-5 h-5 mx-auto ${item.color} mb-1.5`} />
                 <div className="text-xl font-bold text-white">{item.value}</div>
                 <div className="text-xs text-slate-600 mt-0.5">{item.label}</div>
@@ -467,7 +372,6 @@ export default function QuizGame() {
             ))}
           </div>
 
-          {/* Carbon Seedling Stage */}
           <TreeStageCard
             stage={treeStage}
             carbonSaved={carbonSaved}
@@ -476,10 +380,8 @@ export default function QuizGame() {
             lang={lang}
           />
 
-          {/* Knowledge Level */}
           <KnowledgeLevelBar levelInfo={knowledgeInfo} lang={lang} />
 
-          {/* New high score */}
           {isNewHigh && (
             <div className="mt-4 inline-flex items-center gap-2 px-4 py-2 rounded-full bg-amber-500/10 border border-amber-500/20 text-amber-500 text-sm font-bold">
               <PartyPopper className="w-4 h-4" />
@@ -487,16 +389,13 @@ export default function QuizGame() {
             </div>
           )}
 
-          {/* Works Cited */}
           <div className="mt-5 p-4 rounded-xl bg-slate-900 border border-slate-800 text-left">
             <div className="text-xs font-bold text-slate-600 uppercase tracking-wider mb-2 text-center">
               {lang === 'zh' ? '参考文献' : 'Works Cited'}
             </div>
             <ul className="space-y-1">
               {worksCited.map((citation, i) => (
-                <li key={i} className="text-[10px] text-slate-600 leading-relaxed">
-                  [{i + 1}] {citation}
-                </li>
+                <li key={i} className="text-[10px] text-slate-600 leading-relaxed">[{i + 1}] {citation}</li>
               ))}
             </ul>
           </div>
@@ -520,7 +419,6 @@ export default function QuizGame() {
         {/* Top bar */}
         <div className="flex items-center justify-between mb-5">
           <div className="flex items-center gap-3">
-            <Lives lives={lives} maxLives={MAX_LIVES} />
             <ComboDisplay combo={combo} />
           </div>
           <div className="flex items-center gap-2 text-amber-500 bg-slate-900 px-3 py-1.5 rounded-full border border-slate-800">
@@ -552,10 +450,7 @@ export default function QuizGame() {
             <span>{Math.round(progress)}%</span>
           </div>
           <div className="h-2 w-full rounded-full bg-slate-800 overflow-hidden">
-            <div
-              className="h-full bg-emerald-600 transition-all duration-300"
-              style={{ width: `${progress}%` }}
-            />
+            <div className="h-full bg-emerald-600 transition-all duration-300" style={{ width: `${progress}%` }} />
           </div>
         </div>
 
@@ -569,15 +464,13 @@ export default function QuizGame() {
           <Mascot mood={mascotMood} size={50} />
           <div className="min-h-[2rem]">
             {feedbackText && (
-              <div
-                className={`px-3 py-1.5 rounded-lg text-sm font-bold ${
-                  mascotMood === 'happy' || mascotMood === 'excited'
-                    ? 'bg-emerald-900/30 border border-emerald-800/30 text-emerald-400'
-                    : mascotMood === 'sad' || mascotMood === 'shock'
-                    ? 'bg-rose-900/30 border border-rose-800/30 text-rose-400'
-                    : 'bg-slate-900 border border-slate-800 text-slate-400'
-                }`}
-              >
+              <div className={`px-3 py-1.5 rounded-lg text-sm font-bold ${
+                mascotMood === 'happy' || mascotMood === 'excited'
+                  ? 'bg-emerald-900/30 border border-emerald-800/30 text-emerald-400'
+                  : mascotMood === 'sad'
+                  ? 'bg-rose-900/30 border border-rose-800/30 text-rose-400'
+                  : 'bg-slate-900 border border-slate-800 text-slate-400'
+              }`}>
                 {feedbackText}
               </div>
             )}
@@ -585,9 +478,7 @@ export default function QuizGame() {
         </div>
 
         {/* Question Card */}
-        <div
-          className={`p-5 sm:p-6 rounded-xl border bg-slate-900 border-slate-800 ${shake ? 'animate-shake' : ''}`}
-        >
+        <div className={`p-5 sm:p-6 rounded-xl border bg-slate-900 border-slate-800 ${shake ? 'animate-shake' : ''}`}>
           {/* Category badge */}
           {q?.category && (
             <div className="mb-3">
@@ -600,12 +491,7 @@ export default function QuizGame() {
           {/* Question image */}
           {q?.image && (
             <div className="mb-4 rounded-lg overflow-hidden border border-slate-800">
-              <img
-                src={q.image}
-                alt=""
-                className="w-full h-40 sm:h-48 object-cover"
-                onError={(e) => { e.target.style.display = 'none' }}
-              />
+              <img src={q.image} alt="" className="w-full h-40 sm:h-48 object-cover" onError={(e) => { e.target.style.display = 'none' }} />
             </div>
           )}
 
@@ -613,9 +499,7 @@ export default function QuizGame() {
             <div className="flex-shrink-0 w-9 h-9 rounded-lg bg-emerald-900/20 flex items-center justify-center border border-emerald-900/30">
               <Sparkles className="w-4 h-4 text-emerald-500" />
             </div>
-            <h3 className="text-base sm:text-lg font-bold text-white leading-relaxed">
-              {q?.question}
-            </h3>
+            <h3 className="text-base sm:text-lg font-bold text-white leading-relaxed">{q?.question}</h3>
           </div>
 
           {/* Options */}
@@ -629,7 +513,6 @@ export default function QuizGame() {
               } else if (selectedOption === i) {
                 btnClass = 'border-emerald-600 bg-emerald-900/20'
               }
-
               return (
                 <button
                   key={i}
@@ -641,8 +524,7 @@ export default function QuizGame() {
                     <span className={`flex-shrink-0 w-8 h-8 rounded-md flex items-center justify-center text-sm font-bold
                       ${isRevealed && i === q.correct ? 'bg-emerald-600 text-white' :
                         isRevealed && i === selectedOption && i !== q.correct ? 'bg-rose-600 text-white' :
-                        selectedOption === i ? 'bg-emerald-800 text-emerald-400' : 'bg-slate-800 text-slate-500'}`}
-                    >
+                        selectedOption === i ? 'bg-emerald-800 text-emerald-400' : 'bg-slate-800 text-slate-500'}`}>
                       {String.fromCharCode(65 + i)}
                     </span>
                     <span className={`text-sm font-medium ${
@@ -650,9 +532,7 @@ export default function QuizGame() {
                       isRevealed && i === selectedOption && i !== q.correct ? 'text-rose-400' : 'text-slate-300'
                     }`}>{option}</span>
                     {isRevealed && i === q.correct && (
-                      <span className="ml-auto">
-                        <Sparkles className="w-4 h-4 text-emerald-500" />
-                      </span>
+                      <span className="ml-auto"><Sparkles className="w-4 h-4 text-emerald-500" /></span>
                     )}
                   </div>
                 </button>
@@ -685,22 +565,12 @@ export default function QuizGame() {
                 onClick={nextQuestion}
                 className="inline-flex items-center gap-2 px-6 py-2.5 text-sm font-bold text-white rounded-full bg-emerald-600 hover:bg-emerald-500 transition-colors"
               >
-                {currentQ + 1 >= TOTAL_QUESTIONS || lives <= 0
-                  ? (t.quiz?.seeResults || 'See Results')
-                  : (t.quiz?.nextBtn || 'Next')}
+                {currentQ + 1 >= TOTAL_QUESTIONS ? (t.quiz?.seeResults || 'See Results') : (t.quiz?.nextBtn || 'Next')}
                 <ChevronRight className="w-4 h-4" />
               </button>
             </div>
           )}
         </div>
-
-        {lives <= 0 && (
-          <div className="mt-6 p-4 rounded-xl bg-rose-900/10 border border-rose-800/30 text-center">
-            <Skull className="w-7 h-7 mx-auto text-rose-500 mb-1.5" />
-            <p className="text-rose-400 font-bold text-base">{t.quiz?.gameOver || 'Game Over!'}</p>
-            <p className="text-rose-500/60 text-sm mt-0.5">{t.quiz?.outOfLives || 'You ran out of lives.'}</p>
-          </div>
-        )}
       </div>
     </section>
   )
