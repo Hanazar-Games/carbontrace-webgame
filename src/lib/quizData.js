@@ -3,7 +3,24 @@ export const categories = {
   zh: { food: '🍔 饮食', transport: '🚗 交通', energy: '⚡ 能源', consumption: '🛍️ 消费', nature: '🌳 自然' }
 }
 
-export const quizQuestions = {
+const baseUrl = import.meta.env.BASE_URL
+
+function resolvePublicAsset(path) {
+  if (!path) return path
+  if (/^(?:[a-z]+:)?\/\//i.test(path) || path.startsWith('data:')) return path
+
+  const normalizedPath = path.replace(/^\.?\//, '')
+  return `${baseUrl}${normalizedPath}`
+}
+
+function attachAsset(entries, field) {
+  return entries.map((entry) => ({
+    ...entry,
+    [field]: resolvePublicAsset(entry[field]),
+  }))
+}
+
+const quizQuestions = {
   en: [
     {
       question: "Which food has the highest carbon footprint?",
@@ -312,7 +329,8 @@ export const quizQuestions = {
 }
 
 export function getQuizQuestions(lang) {
-  return quizQuestions[lang] || quizQuestions['en']
+  const questions = quizQuestions[lang] || quizQuestions['en']
+  return attachAsset(questions, 'image')
 }
 
 export const gradeInfo = {
@@ -418,7 +436,7 @@ export function getKnowledgeLevel(totalCorrect, lang = 'en') {
   return { current, next, progressToNext, totalCorrect }
 }
 
-export const failMemes = {
+const rawFailMemes = {
   en: [
     { top: "FAILURE", bottom: "is the mother of success", bg: "./images/cow.jpg", mascot: "sad" },
     { top: "EVERY EXPERT", bottom: "was once a beginner", bg: "./images/bike.jpg", mascot: "think" },
@@ -438,6 +456,10 @@ export const failMemes = {
     { top: "差一点", bottom: "但每个答案都在教你", bg: "./images/wind.jpg", mascot: "think" },
   ]
 }
+
+export const failMemes = Object.fromEntries(
+  Object.entries(rawFailMemes).map(([lang, memes]) => [lang, attachAsset(memes, 'bg')])
+)
 
 export const worksCited = [
   "IPCC. (2023). AR6 Synthesis Report. Intergovernmental Panel on Climate Change.",
