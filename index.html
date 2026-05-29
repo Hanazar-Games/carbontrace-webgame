@@ -5,6 +5,18 @@
     <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>carbontrace-website</title>
+    <script>
+      // GitHub Pages SPA redirect recovery
+      (function() {
+        var redirect = sessionStorage.getItem('gh-pages-spa-redirect');
+        if (redirect) {
+          sessionStorage.removeItem('gh-pages-spa-redirect');
+          if (redirect !== window.location.href) {
+            history.replaceState(null, '', redirect);
+          }
+        }
+      })();
+    </script>
   </head>
   <body>
     <div id="root"></div>
